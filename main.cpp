@@ -34,8 +34,15 @@ int main() {
     // open file
     std::ofstream fout("./output.json");
 
+    // for checking .good() from save func
+    bool saveResult = save(playlists, fout);
+
     // save playlist and print status
-    std::cout << "status: " << save(playlists, fout);
+    std::cout << "status: " << saveResult;
+
+    if (!saveResult) {
+        std::cout << "Tiek pieļauta kļūda rakstīšanā! Lūdzu, pārbaudiet, vai ir pieejamas lasīšanas un rakstīšanas tiesības.";
+    }
 
     fout.close();
 
