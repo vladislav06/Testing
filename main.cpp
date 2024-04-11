@@ -1,7 +1,10 @@
+#include <gtest/gtest.h>
 #include "algo.h"
 #include "iostream"
 
 int main() {
+    testing::InitGoogleTest();
+    RUN_ALL_TESTS();
     // init structure
     // \\\\ is needed because json requires \\ to print one \ and c++ requires \\ to print one \.
 
@@ -26,16 +29,15 @@ int main() {
             {
                     .name="playlist 3",
                     .tracks={
-
                     }
             }
     };
 
     // open file
-    std::ofstream fout("./output.json");
+   // std::ofstream fout("./output.json");
 
     // for checking .good() from save func
-    bool saveResult = save(playlists, fout);
+    bool saveResult = save(playlists, std::cout);
 
     // save playlist and print status
     std::cout << "status: " << saveResult;
@@ -44,7 +46,7 @@ int main() {
         std::cout << "Tiek pieļauta kļūda rakstīšanā! Lūdzu, pārbaudiet, vai ir pieejamas lasīšanas un rakstīšanas tiesības.";
     }
 
-    fout.close();
+  //  fout.close();
 
     return 0;
 }
