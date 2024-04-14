@@ -111,7 +111,6 @@ namespace {
     }
 
     TEST(Saver, MalformedData) {
-        GTEST_SKIP();
         std::vector<Playlist> playlists = {
                 {
                         .name=" ",
@@ -123,7 +122,7 @@ namespace {
         std::stringstream strstream;
         save(playlists, strstream);
         ASSERT_EQ(strstream.str(),
-                  "[{\"name\":\" \",\"tracks\":[{\"name\":\" \",\"path\":\"12\0 34\"}]}}]");
+                  "[{\"name\":\" \",\"tracks\":[{\"name\":\" \",\"path\":\"1234\"}]}}]");
     }
 
     TEST(Saver, MalformedData2) {
